@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <title>Vite + Vue</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+<script>
+  window.onload = function () {
+    liff.init({
+      liffId: "2007757926-Q9RyWWrk"
+    }).then(() => {
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      }
+    }).catch(err => console.error('LIFF init error', err));
+  };
+</script>
