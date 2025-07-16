@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
-const msg = ref('Vite + Vue') // 👈 ban đầu
+const msg = ref('Vite + Vue')
 
 window.onload = function () {
   liff.init({
@@ -38,7 +38,7 @@ window.onload = function () {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="msg" />
 </template>
 
 <style scoped>
