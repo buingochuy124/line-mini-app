@@ -12,9 +12,10 @@ window.onload = function () {
       liff.login();
     }
 
-    liff.getIDToken().then(token => {
+    liff.getProfile().then(profile => {
+      msg.value = `Hello ${JSON.stringify(profile)}`
       document.title = 'app title'
-      userData.value = token
+      userData.value =  liff.getIDToken()
     }).catch(err => {
       console.error("Lỗi khi lấy profile:", err);
     });
