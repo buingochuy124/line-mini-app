@@ -18,6 +18,14 @@
           if (!liff.isLoggedIn()) {
             liff.login();
           }
+          liff.getProfile().then(profile => {
+          }).catch(err => {
+            console.error("Lỗi khi lấy profile:", err);
+          });
+
+          const idToken = liff.getIDToken();
+          console.log("ID Token:", idToken);
+
         }).catch(err => console.error('LIFF init error', err));
       };
     </script>
