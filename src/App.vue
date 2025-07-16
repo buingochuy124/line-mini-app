@@ -13,7 +13,7 @@ window.onload = function () {
     }
 
     liff.getProfile().then(profile => {
-      msg.value = `Hello ${profile.displayName}`;
+      msg.value = `Hello ${JSON.stringify(profile)}`;
     }).catch(err => {
       console.error("Lỗi khi lấy profile:", err);
     });
