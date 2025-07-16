@@ -5,7 +5,7 @@ import HelloWorld from './components/MainLayout.vue'
 const userData = ref({
   accessToken: '',
   userId: '',
-  userName:''
+  userName: ''
 })
 
 window.onload = function () {
@@ -13,28 +13,24 @@ window.onload = function () {
     liffId: "2007757926-Q9RyWWrk"
   }).then(() => {
     if (!liff.isLoggedIn()) {
-      liff.login();
+      liff.login()
+      return
     }
 
     liff.getProfile().then(profile => {
-      userData = {
-        ...userData,
-        userId: profile.userId,
-        userName: profile.displayName,
-
-      }
+      userData.value.userId = profile.userId
+      userData.value.userName = profile.displayName
+      userData.value.accessToken = liff.getIDToken()
       document.title = 'app title'
-      userData.value =  liff.getIDToken()
     }).catch(err => {
-      console.error("Lỗi khi lấy profile:", err);
-    });
+      console.error("Lỗi khi lấy profile:", err)
+    })
   }).catch(err => {
-    console.error('LIFF init error', err);
-    alert('LIFF init failed: ' + JSON.stringify(err));
-  });
-};
+    console.error('LIFF init error', err)
+    alert('LIFF init failed: ' + JSON.stringify(err))
+  })
+}
 </script>
-
 
 <template>
   <div>
@@ -42,18 +38,3 @@ window.onload = function () {
   </div>
   <main-layout :userData="userData" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
