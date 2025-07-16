@@ -17,16 +17,14 @@ window.onload = function () {
     }
 
     liff.getProfile().then(profile => {
-      console.log(profile)
       userData = {
         ...userData,
         userId: profile.userId,
-        userName: profile.userName,
+        userName: profile.displayName,
 
       }
       document.title = 'app title'
       userData.value =  liff.getIDToken()
-      console.log(userData.value)
     }).catch(err => {
       console.error("Lỗi khi lấy profile:", err);
     });
