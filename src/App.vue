@@ -7,7 +7,7 @@ const userData = ref({
   userId: '',
   userName: ''
 })
-
+const isLoggedIn = ref(false) 
 window.onload = function () {
   liff.init({
     liffId: "2007757926-Q9RyWWrk"
@@ -22,6 +22,7 @@ window.onload = function () {
       userData.value.userName = profile.displayName
       userData.value.accessToken = liff.getIDToken()
       document.title = 'app title'
+      isLoggedIn.value = true 
     }).catch(err => {
       console.error("Lỗi khi lấy profile:", err)
     })
@@ -33,8 +34,10 @@ window.onload = function () {
 </script>
 
 <template>
-  <div>
-    {{ JSON.stringify(userData) }}
+  <div v-if="!isLoggedIn">
+    <p>Đang đăng nhập, vui lòng chờ...</p>
   </div>
-  <main-layout :userData="userData" />
+   <div v-else>
+    <main-layout :userData="userData" />
+  </div>
 </template>
