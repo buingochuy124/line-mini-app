@@ -10,29 +10,5 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <script>
-      window.onload = function () {
-        liff.init({
-          liffId: "2007757926-Q9RyWWrk"
-        }).then(() => {
-          if (!liff.isLoggedIn()) {
-            liff.login();
-          }
-    
-          liff.getProfile().then(profile => {
-            document.querySelector('title').innerText = `Vite + Vue | ${profile.displayName}`;
-          }).catch(err => {
-            console.error("Lỗi khi lấy profile:", err);
-          });
-    
-          const idToken = liff.getIDToken();
-          console.log("ID Token:", idToken);
-    
-        }).catch(err => {
-          console.error('LIFF init error', err);
-          alert('LIFF init failed: ' + JSON.stringify(err));
-        });
-      };
-    </script>
   </body>
 </html>
