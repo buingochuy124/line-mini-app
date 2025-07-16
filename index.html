@@ -20,8 +20,7 @@
           }
     
           liff.getProfile().then(profile => {
-            console.log("Tên người dùng:", profile.displayName);
-            document.title = `Xin chào, ${profile.displayName}!`; 
+            document.querySelector('title').innerText = `Vite + Vue | ${profile.displayName}`;
           }).catch(err => {
             console.error("Lỗi khi lấy profile:", err);
           });
