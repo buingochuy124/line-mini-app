@@ -2,7 +2,11 @@
 import { ref } from 'vue'
 import HelloWorld from './components/MainLayout.vue'
 
-const userData = ref()
+const userData = ref({
+  accessToken: '',
+  userId: '',
+  userName:''
+})
 
 window.onload = function () {
   liff.init({
@@ -13,16 +17,19 @@ window.onload = function () {
     }
 
     liff.getProfile().then(profile => {
-      msg.value = `Hello ${JSON.stringify(profile)}`
+      console.log(profile)
+      userData = {
+        ...userData,
+        userId: profile.userId,
+        userName: profile.userName,
+
+      }
       document.title = 'app title'
       userData.value =  liff.getIDToken()
+      console.log(userData.value)
     }).catch(err => {
       console.error("Lỗi khi lấy profile:", err);
     });
-
-    const idToken = liff.getIDToken();
-    console.log("ID Token:", idToken);
-
   }).catch(err => {
     console.error('LIFF init error', err);
     alert('LIFF init failed: ' + JSON.stringify(err));
