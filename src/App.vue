@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/MainLayout.vue'
 
-const msg = ref('Vite + Vue')
+const userData = ref()
 
 window.onload = function () {
   liff.init({
@@ -12,8 +12,9 @@ window.onload = function () {
       liff.login();
     }
 
-    liff.getProfile().then(profile => {
-      msg.value = `Hello ${JSON.stringify(profile)} \n 	` + liff.getIDToken();
+    liff.getIDToken().then(token => {
+      document.title = 'app title'
+      userData.value = token
     }).catch(err => {
       console.error("Lỗi khi lấy profile:", err);
     });
@@ -38,7 +39,7 @@ window.onload = function () {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld :msg="msg" />
+  <main-layout :userData="userData" />
 </template>
 
 <style scoped>
