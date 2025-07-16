@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import HelloWorld from './components/MainLayout.vue'
+import MainLayout from './components/MainLayout.vue'
 
 const userData = ref({
   accessToken: '',
