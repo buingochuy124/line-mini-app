@@ -18,15 +18,21 @@
           if (!liff.isLoggedIn()) {
             liff.login();
           }
+    
           liff.getProfile().then(profile => {
+            console.log("Tên người dùng:", profile.displayName);
+            document.title = `Xin chào, ${profile.displayName}!`; 
           }).catch(err => {
             console.error("Lỗi khi lấy profile:", err);
           });
-
+    
           const idToken = liff.getIDToken();
           console.log("ID Token:", idToken);
-
-        }).catch(err => console.error('LIFF init error', err));
+    
+        }).catch(err => {
+          console.error('LIFF init error', err);
+          alert('LIFF init failed: ' + JSON.stringify(err));
+        });
       };
     </script>
   </body>
