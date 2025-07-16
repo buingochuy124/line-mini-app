@@ -38,7 +38,7 @@ window.onload = function () {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="msg" />
+  <HelloWorld :msg="msg" />
 </template>
 
 <style scoped>
